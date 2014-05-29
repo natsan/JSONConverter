@@ -46,16 +46,16 @@ public class FileHandler {
 		List<String> jsonList = new ArrayList<String>();
 		try {
 			
-		//	try(BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)), "UTF8"))) {
-			BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)), "UTF8"));
+			try(BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)), "UTF8"))) {
+		//	BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(new File(filePath)), "UTF8"));
 			String str;
 			if ((str = in.readLine()) != null)
 				jsonList.add(removeUTF8BOM(str));
 
 			while ((str = in.readLine()) != null) 
 				jsonList.add(str);
-			in.close();
-		//	}
+		//	in.close();
+			}
 		} 
 		catch (UnsupportedEncodingException e) 
 		{
